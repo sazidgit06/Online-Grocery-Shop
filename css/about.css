@@ -1,0 +1,25 @@
+ html{
+    scroll-behavior: smooth;
+ }
+ .about-section {
+      padding: 60px 0;
+    }
+    .about-image img {
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .about-title {
+      color: #2e7d32;
+      font-weight: 700;
+    }
+    .highlight {
+      color: #8bc34a;
+    }
+    .btn-green {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .btn-green:hover {
+      background-color: #256428;
+      color: #fff;
+    }

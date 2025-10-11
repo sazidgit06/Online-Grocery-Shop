@@ -1,0 +1,6 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: full;
+  z-index: 1000;
+}
