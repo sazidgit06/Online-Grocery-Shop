@@ -211,7 +211,7 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .cart-tab{
-  background: #6BB252;
+  background: #fbd66e;
   position: fixed;
   inset: 0 -500px 0 auto;
   width: 25rem;
@@ -260,8 +260,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .btn-container .btn:hover{
-  background: goldenrod;
-  color: rgb(18, 18, 46);
+  background: #6bb252;
+  color: #fefefe;
 }
 
 .item{
@@ -272,7 +272,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .cart-list .item:nth-child(odd){
-  background-color: goldenrod;
+  background-color: #6bb252;
 }
 
 .item .item-image img{
