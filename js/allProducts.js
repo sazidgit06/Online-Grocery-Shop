@@ -3,24 +3,12 @@ const cartTab = document.querySelector(".cart-tab");
 const closeBtn = document.querySelector(".close-btn");
 const cardList = document.querySelector(".product-grid");
 const cartList = document.querySelector(".cart-list");
-const wishList = document.querySelector(".wish-list");
 const cartTotal = document.querySelector(".cart-total");
-const wishlistIcon = document.querySelector(".wishlist");
-const wishlistBtn = document.querySelector(".wishlistCart")
-const wishlistclosebtn = document.querySelector(".close-btn");
-const wishlistTab = document.querySelector(".cart-tab");
-const cartTitle = document.querySelector(".cart-title");
-const wishlistTitle = document.querySelector(".wishlist-title");
+
 
 cartIcon.addEventListener('click', (e) => {
 
   cartTab.classList.add('cart-tab-active');
-  cartTitle.style.display = "block";
-  wishlistTitle.style.display = "none";
-
-  cartList.style.display = "block";
-  wishList.style.display = "none";
-
   e.preventDefault();
 
 })
@@ -31,42 +19,13 @@ closeBtn.addEventListener('click', (e) => {
 
 })
 
-wishlistIcon.addEventListener('click', (e) => {
-
-  wishlistTab.classList.add('cart-tab-active');
-  cartTitle.style.display = "none";
-  wishlistTitle.style.display = "block";
-
-  cartList.style.display = "none";
-  wishList.style.display = "block";
-
-  e.preventDefault();
-
-})
-wishlistclosebtn.addEventListener('click', (e) => {
-
-  wishlistTab.classList.remove('cart-tab-active')
-  e.preventDefault();
-
-})
-
 
 let productList = [];
 let cartProduct = [];
-let wishlistProduct = [];
 
 const updateTotals = () => {
   let totalPrice = 0;
   document.querySelectorAll('.item').forEach(item => {
-    const price = parseFloat(item.querySelector('.item-total').textContent.replace('$',''))
-    totalPrice+=price;
-  });
-  cartTotal.textContent = `$${totalPrice}`
-}
-
-const wishlistUpdateTotals = () => {
-  let totalPrice = 0;
-  document.querySelectorAll('.wishlistTotal').forEach(item => {
     const price = parseFloat(item.querySelector('.item-total').textContent.replace('$',''))
     totalPrice+=price;
   });
@@ -119,14 +78,14 @@ const showCards = () => {
                       <div class="col-3"><input type="number" name="quantity"
                           class="form-control border-dark-subtle input-number quantity" value="1"></div>
                       <div class="col-7">
-                      <a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart productCart">
+                      <a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart myCart">
                       <svg width="18"
                             height="18">
                             <use xlink:href="#cart"></use>
                       </svg>
                       Add to Cart</a>
                       </div>
-                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 wishlistCart"><svg width="18"
+                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18"
                             height="18">
                             <use xlink:href="#heart"></use>
                           </svg></a></div>
@@ -138,27 +97,18 @@ const showCards = () => {
 
     cardList.appendChild(orderCard);
 
-    const cartBtn = orderCard.querySelector('.productCart');
-    const wishlistbtn = orderCard.querySelector('.wishlistCart');
+    const cartBtn = orderCard.querySelector('.myCart');
 
     cartBtn.addEventListener('click', (e) => {
       e.preventDefault();
       addToCart(product);
     })
 
-    wishlistbtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      addToWishList(product);
-    })
-
   })
 }
 
-// add to cart
-
 const addToCart = (product) => {
 
-  
   const exist = cartProduct.find(item => item.id === product.id);
   if(exist){
     alert("Item already added");
@@ -187,7 +137,7 @@ const addToCart = (product) => {
             <i class="fa-solid fa-minus minus"></i>
           </a>
 
-          <h3 class="quantity-value">${quantity}</h3>
+          <h4 class="quantity-value">${quantity}</h4>
 
           <a href="#" class="quantity-btn">
             <i class="fa-solid fa-plus plus"></i>
@@ -211,7 +161,6 @@ const addToCart = (product) => {
     quantityValue.textContent = quantity;
     itemTotal.textContent = `$${ price * quantity }`;
      updateTotals();
-     wishlistUpdateTotals();
   })
 
   minusBtn.addEventListener('click', (e) => {
@@ -222,7 +171,6 @@ const addToCart = (product) => {
       quantityValue.textContent = quantity;
       itemTotal.textContent = `$${ (price * quantity) }`;
       updateTotals();
-      wishlistUpdateTotals();
     }else{
       cartItem.classList.add('slide-out');
       
@@ -230,89 +178,6 @@ const addToCart = (product) => {
         cartItem.remove();
       cartProduct = cartProduct.filter(item => item.id !== product.id);
       updateTotals();
-      wishlistUpdateTotals();
-      }, 300)
-    }
-    
-    
-  })
-
-}
-
-// add to wishlist
-
-const addToWishList = (product) => {
-
-  const exist = wishlistProduct.find(item => item.id === product.id);
-  if(exist){
-    alert("Item already in wishlist");
-    return;
-  }
-
-  alert('Product is added to wishlist');
-
-  wishlistProduct.push(product);
-
-  let quantity = 1;
-  let price = parseFloat(product.price.replace('$',''));
-
-  const cartItem = document.createElement('div');
-  cartItem.classList.add('item');
-  cartItem.classList.add('wishlistTotal');
-  cartItem.innerHTML = `
-    <div class="item-image">
-          <img src="${product.image}" alt="">
-        </div>
-        <div>
-          <h4>${product.name}</h4>
-          <h4 class="item-total">${product.price}</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus minus"></i>
-          </a>
-
-          <h3 class="quantity-value">${quantity}</h3>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus plus"></i>
-          </a>
-        </div>
-      `;
-
-  wishList.appendChild(cartItem);
-  wishlistUpdateTotals();
-
-  const plusBtn = cartItem.querySelector('.plus');
-  const quantityValue = cartItem.querySelector('.quantity-value');
-  const itemTotal = cartItem.querySelector('.item-total');
-  const minusBtn = cartItem.querySelector('.minus');
-
-
-  plusBtn.addEventListener('click', (e) => {
-
-    e.preventDefault();
-    quantity++;
-    quantityValue.textContent = quantity;
-    itemTotal.textContent = `$${ price * quantity }`;
-     wishlistUpdateTotals();
-  })
-
-  minusBtn.addEventListener('click', (e) => {
-
-    e.preventDefault();
-    if(quantity > 1){
-      quantity--;
-      quantityValue.textContent = quantity;
-      itemTotal.textContent = `$${ (price * quantity) }`;
-      wishlistUpdateTotals();
-    }else{
-      cartItem.classList.add('slide-out');
-      
-      setTimeout(()=>{
-        cartItem.remove();
-      cartProduct = cartProduct.filter(item => item.id !== product.id);
-      wishlistUpdateTotals();
       }, 300)
     }
     

@@ -384,7 +384,7 @@
 
       <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
         <li class="nav-item border-dashed active">
-          <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+          <a href="AllProducts.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
             <svg width="24" height="24" viewBox="0 0 24 24">
               <use xlink:href="#fruits"></use>
             </svg>
@@ -612,7 +612,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="p-2 mx-1">
+              <a href="#" class="p-2 mx-1 wishlist">
                 <i class="fa-solid fa-heart"></i>
               </a>
             </li>
@@ -3114,155 +3114,26 @@
   <!-- cart tab -->
    
   <div class="cart-tab">
-    <h3>Your cart</h3>
+    <h3 class="cart-title">Your cart</h3>
+    <h3 class="wishlist-title">Your Wishlist</h3>
 
     <div class="cart-list">
-      <!-- <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
+     
+    </div>
 
-          <h4 class="quantity-value">1</h4>
+    <div class="wish-list" style="display: none;">
 
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div> -->
-      <!-- <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="images/product-thumb-22.png" alt="">
-        </div>
-        <div>
-          <h4>vegetables</h4>
-          <h4 class="item-total">$20</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus"></i>
-          </a>
-
-          <h4 class="quantity-value">1</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-      </div> -->
     </div>
 
     <div class="total-container">
       <h4>Total:</h4>
       <h4 class="cart-total">$0</h4>
     </div>
+
+    <div class="wishlist-total-container">
+  <h4>Wishlist Total:</h4>
+  <h4 class="wishlist-total">$0</h4>
+</div>
 
     <div class="btn-container">
       <a href="#" class="btn close-btn">Close</a>
@@ -3551,7 +3422,8 @@
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
   <script src="main.js"></script>
-  <script src="js/featured.js"></script>
+  <!-- <script src="js/featured.js"></script> -->
+  <!-- <script src="js/wishlist.js"></script> -->
 </body>
 
 </html>
