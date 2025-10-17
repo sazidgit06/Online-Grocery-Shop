@@ -43,7 +43,7 @@ const showcards = () => {
                   </a>
                 </figure>
                 <div class="d-flex flex-column text-center">
-                  <h3 class="fs-6 fw-normal">Greek Style Plain Yogurt</h3>
+                  <h3 class="fs-6 fw-normal">${product.name}</h3>
                   <div>
                     <span class="rating">
                       <svg width="18" height="18" class="text-warning">
@@ -66,7 +66,7 @@ const showcards = () => {
                   </div>
                   <div class="d-flex justify-content-center align-items-center gap-2">
                     <del>$24.00</del>
-                    <span class="text-dark fw-semibold">$18.00</span>
+                    <span class="text-dark fw-semibold">${product.price}}</span>
                     <span
                       class="badge border border-dark-subtle rounded-0 fw-normal px-1 fs-7 lh-1 text-body-tertiary">10%
                       OFF</span>

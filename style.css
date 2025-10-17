@@ -210,7 +210,7 @@ h1,h2,h3,h4,h5,h6 {
 /* cart style */
 
 
-.cart-tab{
+/* .cart-tab{
   background: #fbd66e;
   position: fixed;
   inset: 0 -500px 0 auto;
@@ -250,7 +250,7 @@ h1,h2,h3,h4,h5,h6 {
   width: 0;
 } */
 
-.total-container{
+/* .total-container{
   background: goldenrod;
   width: 100%;
   text-align: center;
@@ -326,8 +326,48 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 1.2rem;
   font-weight: 400;
   margin-inline: .6rem;
+} */
+
+.navbar-icons i{
+  font-size: 22px;
 }
 
+.cart-list img,
+.wish-list img{
+  width: 2rem;
+  object-fit: contain;
+}
+.cart-list li,
+.wish-list li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-list .delete-btn,
+.wish-list .delete-btn{
+  cursor: pointer;
+}
+
+/* Slide out animation */
+.slide-out {
+  animation: slideOut 1s ease forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50%{
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
 
 /* end cart style */
 
