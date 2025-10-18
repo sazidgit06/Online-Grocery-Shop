@@ -420,6 +420,8 @@
     </div>
   </div>
 
+  <!-- navbar left tab -->
+
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
 
     <div class="offcanvas-header justify-content-between">
@@ -427,18 +429,18 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
-    <div class="offcanvas-body">
+    <div class="offcanvas-body ">
 
-      <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
-        <li class="nav-item border-dashed active">
+      <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0 tab-list">
+        <!-- <li class="nav-item border-dashed active">
           <a href="AllProducts.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
             <svg width="24" height="24" viewBox="0 0 24 24">
               <use xlink:href="#fruits"></use>
             </svg>
             <span>Fruits and vegetables</span>
           </a>
-        </li>
-        <li class="nav-item border-dashed">
+        </li> -->
+        <!-- <li class="nav-item border-dashed">
           <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
             <svg width="24" height="24" viewBox="0 0 24 24">
               <use xlink:href="#dairy"></use>
@@ -577,7 +579,7 @@
             </svg>
             <span>Pet Food and Supplies</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
     </div>
@@ -688,9 +690,11 @@
     </div>
   </header>
 
+  <!-- banner section -->
+
   <section style="background-image: url('images/banner-1.jpg');background-repeat: no-repeat;background-size: cover;">
-    <div class="container-lg">
-      <div class="row">
+    <div class="container-lg banner">
+      <!-- <div class="row">
         <div class="col-lg-6 pt-5 mt-5">
           <h2 class="display-1 ls-1"><span class="fw-bold text-primary">Organic</span> Foods at your <span
               class="fw-bold">Doorsteps</span></h2>
@@ -786,15 +790,17 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section>
 
+
+
   <!-- Category section -->
 
-  <section id="shop" class="py-5 overflow-hidden">
-    <div class="container-lg">
+  <section id="shop" class="py-5 overflow-hidden categorySection">
+     <div class="container-lg">
       <div class="row">
         <div class="col-md-12">
 
@@ -816,8 +822,8 @@
         <div class="col-md-12">
 
           <div class="category-carousel swiper">
-            <div class="swiper-wrapper">
-              <a href="category.html" class="nav-link swiper-slide text-center">
+              <div class="swiper-wrapper  category-items">
+              <!-- <a href="category.html" class="nav-link swiper-slide text-center">
                 <img src="images/category-thumb-1.jpg" class="rounded-circle" alt="Category Thumbnail">
                 <h4 class="fs-6 mt-3 fw-normal category-title">Fruits & Veges</h4>
               </a>
@@ -864,9 +870,9 @@
               <a href="category.html" class="nav-link swiper-slide text-center">
                 <img src="images/category-thumb-1.jpg" class="rounded-circle" alt="Category Thumbnail">
                 <h4 class="fs-6 mt-3 fw-normal category-title">Breads</h4>
-              </a>
+              </a> -->
 
-            </div>
+            </div> 
           </div>
 
         </div>
@@ -1494,6 +1500,8 @@
       </div>
     </div>
   </section>
+
+  <!-- featured products -->
 
   <section id="featured-products" class="products-carousel">
     <div class="container-lg overflow-hidden py-5">
@@ -3477,6 +3485,7 @@
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
   <script src="main.js"></script>
+  <script src="js/category.js"></script>
   <!-- <script src="js/featured.js"></script> -->
   <!-- <script src="js/wishlist.js"></script> -->
 </body>

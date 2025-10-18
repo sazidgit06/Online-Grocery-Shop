@@ -1,0 +1,25 @@
+[
+    {
+        "title1" : "Organic",
+        "title2" : "Foods at your",
+        "title3" : "Doorsteps",
+        "description" : "Dignissim massa diam elementum.",
+        "bannerBG" : "images/banner-1.jpg",
+        "button1" : "Start Shopping",
+        "button2" : "Join now",
+        "varitiesNumber" : "14k+",
+        "CustomersNumber" : "50k+",
+        "storeLocations" : "10+",
+        "icon1" : "<svg width='60' height='60'><use xlink:href='#fresh'></use></svg>",
+        "subtitle1" : "Fresh from farm",
+        "smallDescription1" : "Lorem ipsum dolor sit amet, consectetur adipi elit.",
+        "icon2" : "<svg width='60' height='60'><use xlink:href='#organic'></use></svg>",
+        "subtitle2" : "100% Organic",
+        "smallDescription2" : "Lorem ipsum dolor sit amet, consectetur adipi elit.",
+        "icon3" : "<svg width='60' height='60'><use xlink:href='#delivery'></use></svg>",
+        "subtitle3" : "Free delivery",
+        "smallDescription3" : "Lorem ipsum dolor sit amet, consectetur adipi elit."
+
+        
+    }
+]
