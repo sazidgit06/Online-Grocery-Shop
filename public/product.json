@@ -2,81 +2,91 @@
     {
         "id" : 1,
         "name" : "Whole Wheat Sandwich Bread",
-        "category" : "Fruits and vegetables",
+        "category" : "Fruits & Veges",
         "image" : "/images/product-thumb-1.png",
         "price" : "$15",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Best selling product"
     },
     {
         "id" : 2,
         "name" : "Whole Grain Oatmeal",
-        "category" : "Fruits and vegetables",
+        "category" : "Dairy and Eggs",
         "image" : "/images/product-thumb-2.png",
         "price" : "$16",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Featured products"
     },
     {
         "id" : 3,
         "name" : "Sharp Cheddar Cheese Block",
-        "category" : "Fruits and vegetables",
+        "category" : "Meat and Poultry",
         "image" : "/images/product-thumb-3.png",
         "price" : "$17",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Just Arrived"
     },
     {
         "id" : 4,
         "name" : "Organic Baby Spinach",
-        "category" : "Fruits and vegetables",
+        "category" : "Seafood",
         "image" : "/images/product-thumb-4.png",
         "price" : "$18",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Featured products"
     },
     {
         "id" : 5,
         "name" : "Organic Spinach Leaves (Fresh Produce)",
-        "category" : "Fruits and vegetables",
+        "category" : "Bakery and Bread",
         "image" : "/images/product-thumb-5.png",
         "price" : "$19",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Best selling product"
     },
     {
         "id" : 6,
         "name" : "Fresh Salmon",
-        "category" : "Fruits and vegetables",
+        "category" : "Fruits & Veges",
         "image" : "/images/product-thumb-6.png",
         "price" : "$20",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Featured products"
     },
     {
         "id" : 7,
         "name" : "Imported Italian Spaghetti Pasta",
-        "category" : "Fruits and vegetables",
+        "category" : "Dairy and Eggs",
         "image" : "/images/product-thumb-7.png",
         "price" : "$21",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Just Arrived"
     },
     {
         "id" : 8,
         "name" : "Granny Smith Apples",
-        "category" : "Fruits and vegetables",
+        "category" : "Meat and Poultry",
         "image" : "/images/product-thumb-8.png",
         "price" : "$22",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Best selling product"
     },
     {
         "id" : 9,
         "name" : "Organic 2% Reduced Fat Milk",
-        "category" : "Fruits and vegetables",
+        "category" : "Seafood",
         "image" : "/images/product-thumb-9.png",
         "price" : "$23",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Best selling product"
     },
     {
         "id" : 10,
         "name" : "Greek Style Plain Yogurt",
-        "category" : "Fruits and vegetables",
+        "category" : "Bakery and Bread",
         "image" : "/images/product-thumb-10.png",
         "price" : "$24",
-        "rating" : 4.5
+        "rating" : 4.5,
+        "Filter" : "Best selling product"
     }
 ]

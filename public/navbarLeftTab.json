@@ -3,97 +3,97 @@
         "id" : 1,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#fruits'></use></svg>",
         "name" : "Fruits and vegetables",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 2,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#dairy'></use></svg>",
         "name" : "Dairy and Eggs",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 3,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#meat'></use></svg>",
         "name" : "Meat and poultry",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 4,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#seafood'></use></svg>",
         "name" : "Seafood",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 5,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#bakery'></use></svg>",
         "name" : "Bakery and Bread",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 6,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#canned'></use></svg>",
         "name" : "Canned Goods",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 7,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#frozen'></use></svg>",
         "name" : "Frozen Foods",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 8,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#pasta'></use></svg>",
         "name" : "Pasta and Rice",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 9,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#breakfast'></use></svg>",
         "name" : "Breakfast Foods",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 10,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#snacks'></use></svg>",
         "name" : "Snacks and Chips",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 11,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#spices'></use></svg>",
         "name" : "Spices and seasonings",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 12,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#baby'></use></svg>",
         "name" : "Baby Food and Formula",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 13,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#health'></use></svg>",
         "name" : "Health and wellness",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 14,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#household'></use></svg>",
         "name" : "Household Supplies",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 15,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#personal'></use></svg>",
         "name" : "Personal Care",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     },
     {
         "id" : 16,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#pet'></use></svg>",
         "name" : "Pet Food and Supplies",
-        "href" : "AllProducts.html"
+        "href" : "category.html"
     }
 
 ]

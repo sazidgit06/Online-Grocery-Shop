@@ -198,6 +198,7 @@ const showBannerData = () => {
 
 }
 
+
 const showTab = () => {
   console.log(navbarTabProduct)
   navbarTabProduct.forEach(tabProduct => {
@@ -205,7 +206,7 @@ const showTab = () => {
     const tablisthtml = `
     
       <li class="nav-item border-dashed active">
-          <a href="${tabProduct.href}" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+          <a href="${tabProduct.href}" class="nav-link d-flex align-items-center gap-3 text-dark p-2 category-btn">
             ${tabProduct.icon}
             <span>${tabProduct.name}</span>
           </a>
@@ -217,6 +218,65 @@ const showTab = () => {
 
   })
 }
+
+// // show by category name
+
+// const productContainer = document.getElementById("product-container");
+// const categoryButtons = document.querySelectorAll(".category-btn");
+// const categoryTitle = document.getElementById("category-title");
+
+// let productsData = [];
+
+// // Load JSON Data
+// fetch("public/product.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     productsData = data;
+//     console.log(productsData)
+//   })
+
+// // On Category Button Click
+// categoryButtons.forEach(btn => {
+//   btn.addEventListener("click", () => {
+//     const categoryName = btn.dataset.category;
+//     console.log(categoryName)
+//     categoryTitle.textContent = categoryName;
+//     showProductsByCategory(categoryName);
+//   });
+// });
+
+// // Filter and Display Products
+// function showProductsByCategory(category) {
+//   const filteredProducts = productsData.filter(
+//     product => product.category.toLowerCase() === category.toLowerCase()
+//   );
+
+//   productContainer.innerHTML = "";
+
+//   if (filteredProducts.length === 0) {
+//     productContainer.innerHTML = `<p class="text-center text-muted">No products found in ${category}</p>`;
+//     return;
+//   }
+
+//   filteredProducts.forEach(item => {
+//     const productHTML = `
+//       <div class="col-md-3 col-sm-6">
+//         <div class="card h-100 text-center shadow-sm border-0">
+//           <img src="${item.image}" class="card-img-top p-3" alt="${item.name}">
+//           <div class="card-body">
+//             <h6 class="card-title fw-bold">${item.name}</h6>
+//             <p class="text-success fw-semibold">${item.price}</p>
+//             <p class="text-warning">⭐ ${item.rating}</p>
+//           </div>
+//         </div>
+//       </div>
+//     `;
+//     productContainer.innerHTML += productHTML;
+//   });
+// }
+
+
+
 
 
 
