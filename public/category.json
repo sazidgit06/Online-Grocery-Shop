@@ -7,31 +7,31 @@
     },
     {
         "id" : 2,
-        "name" : "Breads & Sweets",
+        "name" : "Dairy and Eggs",
         "image" : "images/category-thumb-2.jpg",
         "href" : "category.html"
     },
     {
         "id" : 3,
-        "name" : "Drinks",
+        "name" : "Meat and poultry",
         "image" : "images/category-thumb-3.jpg",
         "href" : "category.html"
     },
     {
         "id" : 4,
-        "name" : "Beverages",
+        "name" : "Seafood",
         "image" : "images/category-thumb-4.jpg",
         "href" : "category.html"
     },
     {
         "id" : 5,
-        "name" : "Meat Products",
+        "name" : "Bakery and Bread ",
         "image" : "images/category-thumb-5.jpg",
         "href" : "category.html"
     },
     {
         "id" : 6,
-        "name" : "Breakfast Foods",
+        "name" : "Canned Goods",
         "image" : "images/category-thumb-6.jpg",
         "href" : "category.html"
     },
@@ -55,7 +55,7 @@
     },
     {
         "id" : 10,
-        "name" : "Pasta & Goods",
+        "name" : "Pasta & Rice",
         "image" : "images/category-thumb-1.jpg",
         "href" : "category.html"
     },
@@ -67,7 +67,7 @@
     },
     {
         "id" : 12,
-        "name" : "Health and wealness",
+        "name" : "Fruits & Veges",
         "image" : "images/category-thumb-3.jpg",
         "href" : "category.html"
     }

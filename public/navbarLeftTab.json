@@ -2,7 +2,7 @@
     {
         "id" : 1,
         "icon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#fruits'></use></svg>",
-        "name" : "Fruits and vegetables",
+        "name" : "Fruits & veges",
         "href" : "category.html"
     },
     {

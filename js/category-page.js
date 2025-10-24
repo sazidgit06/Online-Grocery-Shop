@@ -84,16 +84,10 @@ if (categoryName) {
             console.log('Number of products found:', filteredProducts.length);
 
             if (filteredProducts.length === 0) {
-                productContainer.innerHTML = `
+                categoryTitle.innerHTML = `
                     <div class="col-12">
                         <div class="alert alert-info text-center">
-                            <h4>No products found in "${decodedCategory}" category</h4>
-                            <p>Available categories in database:</p>
-                            <ul class="list-unstyled">
-                                ${[...new Set(data.map(p => p.category))].map(cat =>
-                    `<li><strong>${cat}</strong></li>`
-                ).join('')}
-                            </ul>
+                            <h4>No products found in "${decodedCategory}" category</h4>                            
                             <a href="index.html" class="btn btn-primary mt-3">Go to Homepage</a>
                         </div>
                     </div>

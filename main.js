@@ -11,7 +11,6 @@ const wishlistclosebtn = document.querySelector(".close-btn");
 const wishlistTab = document.querySelector(".cart-tab");
 const cartTitle = document.querySelector(".cart-title");
 const wishlistTitle = document.querySelector(".wishlist-title");
-const tabList = document.querySelector(".tab-list");
 const bannerSection = document.querySelector('.banner');
 
 // cartIcon.addEventListener('click', (e) => {
@@ -57,7 +56,6 @@ let productList = [];
 let cartProduct = [];
 // let wishlistProduct = [];
 let wishlistProduct = [];
-let navbarTabProduct = [];
 let bannerData = [];
 
 const updateTotals = () => {
@@ -199,25 +197,7 @@ const showBannerData = () => {
 }
 
 
-const showTab = () => {
-  console.log(navbarTabProduct)
-  navbarTabProduct.forEach(tabProduct => {
 
-    const tablisthtml = `
-    
-      <li class="nav-item border-dashed active">
-          <a href="${tabProduct.href}" class="nav-link d-flex align-items-center gap-3 text-dark p-2 category-btn">
-            ${tabProduct.icon}
-            <span>${tabProduct.name}</span>
-          </a>
-        </li>
-
-    `;
-
-    tabList.insertAdjacentHTML("beforeend", tablisthtml);
-
-  })
-}
 
 // // show by category name
 
@@ -601,16 +581,7 @@ const initApp = () => {
     })
 }
 
-const navbarLeftTab = () => {
 
-  fetch('public/navbarLeftTab.json')
-    .then(res => res.json())
-    .then(data => {
-      navbarTabProduct = data;
-      showTab();
-    })
-
-}
 
 const banner = () => {
   fetch('public/banner.json')
@@ -622,5 +593,4 @@ const banner = () => {
 }
 
 initApp();
-navbarLeftTab();
 banner();
