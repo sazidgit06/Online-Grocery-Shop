@@ -269,7 +269,7 @@ const showCards = () => {
     orderCard.innerHTML = `
         <div class='product-item'>
             <figure>
-                  <a href="index.html" title="Product Title">
+                  <a href="singleProduct.html?id=${product.id}" title="Product Title">
                     <img src="${product.image}" alt="Product Thumbnail" class="tab-image">
                   </a>
                 </figure>
