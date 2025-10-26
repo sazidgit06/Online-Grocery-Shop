@@ -3,42 +3,54 @@ const carttab = document.querySelector(".cart-tab");
 const closebtn = document.querySelector(".close-btn");
 const wrapper = document.querySelector(".product-wrapper");
 const cartlist = document.querySelector(".cart-list");
-const carttotal = document.querySelector(".cart-total")
-
-carticon.addEventListener('click', (e) => {
-
-  carttab.classList.add('cart-tab-active');
-  e.preventDefault();
-
-})
-closebtn.addEventListener('click', (e) => {
-
-  carttab.classList.remove('cart-tab-active')
-  e.preventDefault();
-
-})
+const carttotal = document.querySelector(".cart-total");
+const wishListfeature = document.querySelector(".wish-list");
 
 
-let productlist = [];
-let cartproduct = [];
+let featuredproductList = [];
+let featuredcartProduct = [];
+let featuredwishlistProduct = [];
 
-const updatetotals = () => {
+const featuredupdateTotals = () => {
   let totalPrice = 0;
-  document.querySelectorAll('.item').forEach(item => {
-    const price = parseFloat(item.querySelector('.item-total').textContent.replace('$', ''))
+
+  const cartItems = document.querySelectorAll(".cart-list li");
+
+  cartItems.forEach(item => {
+    const priceText = item.querySelector("span.text-body-secondary").textContent;
+    const price = parseFloat(priceText.replace("$", ""));
     totalPrice += price;
   });
-  carttotal.textContent = `$${totalPrice}`
-}
+
+  cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+};
+
+const featuredwishlistUpdateTotals = () => {
+  let totalPrice = 0;
+
+  const wishlistItems = document.querySelectorAll(".wish-list li");
+
+  wishlistItems.forEach(item => {
+    const priceText = item.querySelector("span.text-body-secondary").textContent;
+    const price = parseFloat(priceText.replace("$", ""));
+    totalPrice += price;
+  });
+
+  const wishlistTotal = document.querySelector(".wishlist-total");
+  if (wishlistTotal) {
+    wishlistTotal.textContent = `$${totalPrice.toFixed(2)}`;
+  }
+
+};
 
 const showcards = () => {
-  productlist.forEach(product => {
+  featuredproductList.forEach(product => {
     const producthtml = document.createElement('div')
     producthtml.classList.add('product-item');
     producthtml.classList.add('swiper-slide');
     producthtml.innerHTML = `
                 <figure>
-                  <a href="index.html" title="Product Title">
+                  <a href="singleProduct.html?id=${product.id}" title="Product Title">
                     <img src="${product.image}" alt="Product Thumbnail" class="tab-image">
                   </a>
                 </figure>
@@ -79,7 +91,7 @@ const showcards = () => {
                             height="18">
                             <use xlink:href="#cart"></use>
                           </svg> Add to Cart</a></div>
-                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6"><svg width="18"
+                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 wishlistCart"><svg width="18"
                             height="18">
                             <use xlink:href="#heart"></use>
                           </svg></a></div>
@@ -91,18 +103,68 @@ const showcards = () => {
     wrapper.appendChild(producthtml);
 
     const cartBtn = producthtml.querySelector('.mycart');
+    const wishlistbtn = producthtml.querySelector('.wishlistCart');
 
     cartBtn.addEventListener('click', (e) => {
       e.preventDefault();
       addtocart(product);
     })
+    wishlistbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      featuredWishlist(product);
+    })
 
   })
 }
 
+const featuredWishlist = (product) => {
+  const exist = featuredwishlistProduct.find(item => item.id === product.id);
+  if (exist) {
+    alert("Item already in wishlist");
+    return;
+  }
+
+  alert('Product is added to wishlist');
+  featuredwishlistProduct.push(product);
+
+  const wishlistItemHTML = `
+    <li class="list-group-item d-flex justify-content-between lh-sm">
+      <img src="${product.image}" />
+      <div>
+        <h6 class="my-0">${product.name}</h6>
+        <small class="text-body-secondary">${product.category}</small>
+      </div>
+      <span class="text-body-secondary">${product.price}</span>
+      <i class="fa-solid fa-trash delete-btn"></i>
+    </li>
+  `;
+
+  wishListfeature.insertAdjacentHTML("beforeend", wishlistItemHTML);
+
+  featuredwishlistUpdateTotals();
+
+  const deleteBtn = wishList.querySelector("li:last-child .delete-btn");
+
+  deleteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const li = e.target.closest("li");
+    li.classList.add("slide-out");
+
+    setTimeout(() => {
+      li.remove();
+      const index = featuredwishlistProduct.findIndex(item => item.id === product.id);
+      if (index !== -1) featuredwishlistProduct.splice(index, 1);
+
+      featuredwishlistUpdateTotals();
+    }, 300);
+
+  });
+};
+
 const addtocart = (product) => {
 
-  const exist = cartproduct.find(item => item.id === product.id);
+  const exist = featuredcartProduct.find(item => item.id === product.id);
   if (exist) {
     alert("Item already added");
     return;
@@ -110,81 +172,51 @@ const addtocart = (product) => {
 
   alert('Product is added to cart');
 
-  cartproduct.push(product);
+  featuredcartProduct.push(product);
 
   let quantity = 1;
   let price = parseFloat(product.price.replace('$', ''))
 
-  const cartItem = document.createElement('div');
-  cartItem.classList.add('item');
-  cartItem.innerHTML = `
-    <div class="item-image">
-          <img src="${product.image}" alt="">
-        </div>
-        <div>
-          <h4>${product.name}</h4>
-          <h4 class="item-total">${product.price}</h4>
-        </div>
-        <div class="flex">
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-minus minus"></i>
-          </a>
-
-          <h4 class="quantity-value">${quantity}</h4>
-
-          <a href="#" class="quantity-btn">
-            <i class="fa-solid fa-plus plus"></i>
-          </a>
-        </div>
+  const cartHtml = `
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+          
+              <img src="${product.image}" />
+            
+            <div>
+              <h6 class="my-0">${product.name}</h6>
+              <small class="text-body-secondary">${product.category}</small>
+            </div>
+            <span class="text-body-secondary">${product.price}</span>
+            <i class="fa-solid fa-trash delete-btn"></i>
+          </li>
       `;
 
-  cartlist.appendChild(cartItem);
-  updatetotals();
+  cartlist.insertAdjacentHTML('beforeend', cartHtml)
+  featuredupdateTotals();
 
-  const plusBtn = cartItem.querySelector('.plus');
-  const quantityValue = cartItem.querySelector('.quantity-value');
-  const itemTotal = cartItem.querySelector('.item-total');
-  const minusBtn = cartItem.querySelector('.minus');
+    const deleteBtn = cartList.querySelector("li:last-child .delete-btn");
 
-
-  plusBtn.addEventListener('click', (e) => {
-
+  deleteBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    quantity++;
-    quantityValue.textContent = quantity;
-    itemTotal.textContent = `$${price * quantity}`;
-    updatetotals();
-  })
 
-  minusBtn.addEventListener('click', (e) => {
+    const li = e.target.closest("li");
+    li.classList.add("slide-out");
 
-    e.preventDefault();
-    if (quantity > 1) {
-      quantity--;
-      quantityValue.textContent = quantity;
-      itemTotal.textContent = `$${(price * quantity)}`;
-      updatetotals();
-    } else {
-      cartItem.classList.add('slide-out');
-
-      setTimeout(() => {
-        cartItem.remove();
-        cartproduct = cartproduct.filter(item => item.id !== product.id);
-        updatetotals();
-      }, 300)
-    }
-
-
+  setTimeout(() => {
+    li.remove();
+    featuredcartProduct = featuredcartProduct.filter(item => item.id !== product.id);
+    featuredupdateTotals();
+  }, 300);
   })
 
 }
 
 const initapp = () => {
 
-  fetch('product.json')
+  fetch('public/product.json')
     .then(res => res.json())
     .then(data => {
-      productlist = data;
+      featuredproductList = data;
       showcards();
     })
 }

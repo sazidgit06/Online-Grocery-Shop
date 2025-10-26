@@ -1,0 +1,16 @@
+[
+    {
+        "title1": "Items on Sale",
+        "discount1" : "Discounts up to 30%",
+        "bannerImage1" : "images/banner-ad-1.jpg",
+        "button": "shop now",
+
+        "title2" : "Combo offers",
+        "discount2" : "Discounts up to 50%",
+        "bannerImage2" : "images/banner-ad-2.jpg",
+
+        "title3" : "Discount Coupons",
+        "discount3" : "Discounts up to 40%",
+        "bannerImage3" : "images/banner-ad-3.jpg"
+    }
+]

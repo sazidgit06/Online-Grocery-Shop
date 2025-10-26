@@ -13,48 +13,9 @@ const cartTitle = document.querySelector(".cart-title");
 const wishlistTitle = document.querySelector(".wishlist-title");
 const bannerSection = document.querySelector('.banner');
 
-// cartIcon.addEventListener('click', (e) => {
-
-//   cartTab.classList.add('cart-tab-active');
-//   cartTitle.style.display = "block";
-//   wishlistTitle.style.display = "none";
-
-//   cartList.style.display = "block";
-//   wishList.style.display = "none";
-
-//   e.preventDefault();
-
-// })
-// closeBtn.addEventListener('click', (e) => {
-
-//   cartTab.classList.remove('cart-tab-active')
-//   e.preventDefault();
-
-// })
-
-// wishlistIcon.addEventListener('click', (e) => {
-
-//   wishlistTab.classList.add('cart-tab-active');
-//   cartTitle.style.display = "none";
-//   wishlistTitle.style.display = "block";
-
-//   cartList.style.display = "none";
-//   wishList.style.display = "block";
-
-//   e.preventDefault();
-
-// })
-// wishlistclosebtn.addEventListener('click', (e) => {
-
-//   wishlistTab.classList.remove('cart-tab-active')
-//   e.preventDefault();
-
-// })
-
 
 let productList = [];
 let cartProduct = [];
-// let wishlistProduct = [];
 let wishlistProduct = [];
 let bannerData = [];
 
@@ -196,70 +157,6 @@ const showBannerData = () => {
 
 }
 
-
-
-
-// // show by category name
-
-// const productContainer = document.getElementById("product-container");
-// const categoryButtons = document.querySelectorAll(".category-btn");
-// const categoryTitle = document.getElementById("category-title");
-
-// let productsData = [];
-
-// // Load JSON Data
-// fetch("public/product.json")
-//   .then(res => res.json())
-//   .then(data => {
-//     productsData = data;
-//     console.log(productsData)
-//   })
-
-// // On Category Button Click
-// categoryButtons.forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     const categoryName = btn.dataset.category;
-//     console.log(categoryName)
-//     categoryTitle.textContent = categoryName;
-//     showProductsByCategory(categoryName);
-//   });
-// });
-
-// // Filter and Display Products
-// function showProductsByCategory(category) {
-//   const filteredProducts = productsData.filter(
-//     product => product.category.toLowerCase() === category.toLowerCase()
-//   );
-
-//   productContainer.innerHTML = "";
-
-//   if (filteredProducts.length === 0) {
-//     productContainer.innerHTML = `<p class="text-center text-muted">No products found in ${category}</p>`;
-//     return;
-//   }
-
-//   filteredProducts.forEach(item => {
-//     const productHTML = `
-//       <div class="col-md-3 col-sm-6">
-//         <div class="card h-100 text-center shadow-sm border-0">
-//           <img src="${item.image}" class="card-img-top p-3" alt="${item.name}">
-//           <div class="card-body">
-//             <h6 class="card-title fw-bold">${item.name}</h6>
-//             <p class="text-success fw-semibold">${item.price}</p>
-//             <p class="text-warning">⭐ ${item.rating}</p>
-//           </div>
-//         </div>
-//       </div>
-//     `;
-//     productContainer.innerHTML += productHTML;
-//   });
-// }
-
-
-
-
-
-
 const showCards = () => {
   console.log(productList)
   productList.forEach(product => {
@@ -381,7 +278,6 @@ const addToCart = (product) => {
       
       `;
 
-  // cartList.insertAdjacentElement("beforebegin", cartProduct);
   cartList.insertAdjacentHTML("beforeend", cartProducthtml);
   
 
@@ -402,49 +298,7 @@ const addToCart = (product) => {
   }, 300);
   })
 
-
-
-  // const plusBtn = cartItem.querySelector('.plus');
-  // const quantityValue = cartItem.querySelector('.quantity-value');
-  // const itemTotal = cartItem.querySelector('.cart-total');
-  // const minusBtn = cartItem.querySelector('.minus');
-
-
-  // plusBtn.addEventListener('click', (e) => {
-
-  //   e.preventDefault();
-  //   quantity++;
-  //   quantityValue.textContent = quantity;
-  //   itemTotal.textContent = `$${ price * quantity }`;
-  //    updateTotals();
-  // })
-
-  // minusBtn.addEventListener('click', (e) => {
-
-  //   e.preventDefault();
-  //   if(quantity > 1){
-  //     quantity--;
-  //     quantityValue.textContent = quantity;
-  //     itemTotal.textContent = `$${ (price * quantity) }`;
-  //     updateTotals();
-  //   }else{
-  //     cartItem.classList.add('slide-out');
-      
-  //     setTimeout(()=>{
-  //       cartItem.remove();
-  //     cartProduct = cartProduct.filter(item => item.id !== product.id);
-  //     updateTotals();
-  //     }, 300)
-  //   }
-    
-    
-  // })
-
 }
-
-// add to wishlist
-
-// Add to Wishlist
 
 
 const addToWishList = (product) => {

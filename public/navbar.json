@@ -1,0 +1,24 @@
+[
+    {
+        "logo" : "images/logo.svg",
+        "menuIcon" : "<svg width='24' height='24' viewBox='0 0 24 24'><use xlink:href='#menu'></use></svg>",
+        "option1" : "All category",
+        "option2" : "Groceries",
+        "option3" : "Drinks",
+        "option4" : "Chocolates",
+        "inputPlaceholder" : "Search for more than 20,000 products",
+        "searchIcon" : "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='currentColor'd='M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z' /></svg>",
+        "homeTitle" : "Home",
+        "pageTitle" : "Pages",
+        "aboutTitle" : "About us",
+        "shopTitle" : "Shop",
+        "contactTitle" : "Contact us",
+        "blogTitle" : "Blog",
+        "profileTitle" : "My profile",
+        "profileIcon" : "<i class='fa-solid fa-user'></i></a>",
+        "wishlistIcon" : "<i class='fa-solid fa-heart'></i></a>",
+        "cartIcon" : "<i class='fa-solid fa-cart-plus'></i></a>"
+
+        
+    }
+]
