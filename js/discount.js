@@ -15,7 +15,7 @@ const showDiscountData = () => {
                 <div class="content-wrapper text-light">
                   <h3 class="banner-title text-light">${discountData[0].title1}</h3>
                   <p>${discountData[0].discount1}</p>
-                  <a href="#" class="btn-link text-white">${discountData[0].button}</a>
+                  <a href="allProducts.html" class="btn-link text-white">${discountData[0].button}</a>
                 </div>
               </div>
             </div>
@@ -26,7 +26,7 @@ const showDiscountData = () => {
                 <div class="content-wrapper text-light">
                   <h3 class="banner-title text-light">${discountData[0].title2}</h3>
                   <p>${discountData[0].discount2}</p>
-                  <a href="#" class="btn-link text-white">${discountData[0].button}</a>
+                  <a href="allProducts.html" class="btn-link text-white">${discountData[0].button}</a>
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@ const showDiscountData = () => {
                 <div class="content-wrapper text-light">
                   <h3 class="banner-title text-light">${discountData[0].title3}</h3>
                   <p>${discountData[0].discount3}</p>
-                  <a href="#" class="btn-link text-white">${discountData[0].button}</a>
+                  <a href="allProducts.html" class="btn-link text-white">${discountData[0].button}</a>
                 </div>
               </div>
             </div> 

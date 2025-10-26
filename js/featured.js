@@ -2,6 +2,8 @@ const carticon = document.querySelector(".cart-icon");
 const carttab = document.querySelector(".cart-tab");
 const closebtn = document.querySelector(".close-btn");
 const wrapper = document.querySelector(".product-wrapper");
+const popularWrapper = document.querySelector(".popular-product-wrapper");
+const justArrived = document.querySelector(".justArrived-product-wrapper");
 const cartlist = document.querySelector(".cart-list");
 const carttotal = document.querySelector(".cart-total");
 const wishListfeature = document.querySelector(".wish-list");
@@ -101,6 +103,155 @@ const showcards = () => {
         `;
 
     wrapper.appendChild(producthtml);
+  
+
+    const cartBtn = producthtml.querySelector('.mycart');
+    const wishlistbtn = producthtml.querySelector('.wishlistCart');
+
+    cartBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      addtocart(product);
+    })
+    wishlistbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      featuredWishlist(product);
+    })
+
+  })
+}
+const showjustarrivedcards = () => {
+  featuredproductList.forEach(product => {
+    const producthtml = document.createElement('div')
+    producthtml.classList.add('product-item');
+    producthtml.classList.add('swiper-slide');
+    producthtml.innerHTML = `
+                <figure>
+                  <a href="singleProduct.html?id=${product.id}" title="Product Title">
+                    <img src="${product.image}" alt="Product Thumbnail" class="tab-image">
+                  </a>
+                </figure>
+                <div class="d-flex flex-column text-center">
+                  <h3 class="fs-6 fw-normal">${product.name}</h3>
+                  <div>
+                    <span class="rating">
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-half"></use>
+                      </svg>
+                    </span>
+                    <span>(222)</span>
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center gap-2">
+                    <del>$24.00</del>
+                    <span class="text-dark fw-semibold">${product.price}}</span>
+                    <span
+                      class="badge border border-dark-subtle rounded-0 fw-normal px-1 fs-7 lh-1 text-body-tertiary">10%
+                      OFF</span>
+                  </div>
+                  <div class="button-area p-3 pt-0">
+                    <div class="row g-1 mt-2">
+                      <div class="col-3"><input type="number" name="quantity"
+                          class="form-control border-dark-subtle input-number quantity" value="1"></div>
+                      <div class="col-7"><a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart mycart"><svg width="18"
+                            height="18">
+                            <use xlink:href="#cart"></use>
+                          </svg> Add to Cart</a></div>
+                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 wishlistCart"><svg width="18"
+                            height="18">
+                            <use xlink:href="#heart"></use>
+                          </svg></a></div>
+                    </div>
+                  </div>
+                </div> 
+        `;
+
+    justArrived.appendChild(producthtml);
+  
+
+    const cartBtn = producthtml.querySelector('.mycart');
+    const wishlistbtn = producthtml.querySelector('.wishlistCart');
+
+    cartBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      addtocart(product);
+    })
+    wishlistbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      featuredWishlist(product);
+    })
+
+  })
+}
+const showpopularcards = () => {
+  featuredproductList.forEach(product => {
+    const producthtml = document.createElement('div')
+    producthtml.classList.add('product-item');
+    producthtml.classList.add('swiper-slide');
+    producthtml.innerHTML = `
+                <figure>
+                  <a href="singleProduct.html?id=${product.id}" title="Product Title">
+                    <img src="${product.image}" alt="Product Thumbnail" class="tab-image">
+                  </a>
+                </figure>
+                <div class="d-flex flex-column text-center">
+                  <h3 class="fs-6 fw-normal">${product.name}</h3>
+                  <div>
+                    <span class="rating">
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-full"></use>
+                      </svg>
+                      <svg width="18" height="18" class="text-warning">
+                        <use xlink:href="#star-half"></use>
+                      </svg>
+                    </span>
+                    <span>(222)</span>
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center gap-2">
+                    <del>$24.00</del>
+                    <span class="text-dark fw-semibold">${product.price}}</span>
+                    <span
+                      class="badge border border-dark-subtle rounded-0 fw-normal px-1 fs-7 lh-1 text-body-tertiary">10%
+                      OFF</span>
+                  </div>
+                  <div class="button-area p-3 pt-0">
+                    <div class="row g-1 mt-2">
+                      <div class="col-3"><input type="number" name="quantity"
+                          class="form-control border-dark-subtle input-number quantity" value="1"></div>
+                      <div class="col-7"><a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart mycart"><svg width="18"
+                            height="18">
+                            <use xlink:href="#cart"></use>
+                          </svg> Add to Cart</a></div>
+                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 wishlistCart"><svg width="18"
+                            height="18">
+                            <use xlink:href="#heart"></use>
+                          </svg></a></div>
+                    </div>
+                  </div>
+                </div> 
+        `;
+
+    popularWrapper.appendChild(producthtml);
+  
 
     const cartBtn = producthtml.querySelector('.mycart');
     const wishlistbtn = producthtml.querySelector('.wishlistCart');
@@ -218,6 +369,8 @@ const initapp = () => {
     .then(data => {
       featuredproductList = data;
       showcards();
+      showpopularcards();
+      showjustarrivedcards();
     })
 }
 

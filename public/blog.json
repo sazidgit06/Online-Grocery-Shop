@@ -1,0 +1,24 @@
+[
+    {
+        "title" : "Our Recent Blogs",
+        "viewAllBtn" : "View All",
+        "image1" : "images/post-thumbnail-1.jpg",
+        "blog1Date" : "22 Aug 2021",
+        "blog1category" : "tips & tricks",
+        "blog1title" : "Top 10 casual look ideas to dress up your kids",
+        "blog1subtitle" : "Lorem ipsum dolor sit amet, consectetur adipi elit. Aliquet eleifend viverra enim tincidunt donecquam. A in arcu, hendrerit neque dolor morbi...",
+
+        "image2" : "images/post-thumbnail-2.jpg",
+        "blog2Date" : "25 Aug 2021",
+        "blog2category" : "trending",
+        "blog2title" : "Latest trends of wearing street wears supremely",
+        "blog2subtitle" : "Lorem ipsum dolor sit amet, consectetur adipi elit. Aliquet eleifend viverra enim tincidunt donecquam. A in arcu, hendrerit neque dolor morbi...",
+
+
+        "image3" : "images/post-thumbnail-3.jpg",
+        "blog3Date" : "28 Aug 2021",
+        "blog3category" : "inspiration",
+        "blog3title" : "10 Different Types of comfortable clothes ideas for women",
+        "blog3subtitle" : "Lorem ipsum dolor sit amet, consectetur adipi elit. Aliquet eleifend viverra enim tincidunt donecquam. A in arcu, hendrerit neque dolor morbi..."
+    }
+]

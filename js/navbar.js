@@ -53,8 +53,8 @@ const showNavbarData = () => {
               <a class="nav-link dropdown-toggle pe-3" role="button" id="pages" data-bs-toggle="dropdown"
                 aria-expanded="false">${navbarData[0].pageTitle}</a>
               <ul class="dropdown-menu position-absolute border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
-                <li><a href="#about" class="dropdown-item">${navbarData[0].aboutTitle}</a></li>
-                <li><a href="#shop" class="dropdown-item">${navbarData[0].shopTitle}</a></li>
+                <li><a href="about.html" class="dropdown-item">${navbarData[0].aboutTitle}</a></li>
+                <li><a href="allProducts.html" class="dropdown-item">${navbarData[0].shopTitle}</a></li>
                 <li><a href="singleProduct.html" class="dropdown-item">Single Product</a></li>
                 <li><a href="#blog" class="dropdown-item">${navbarData[0].blogTitle}</a></li>
                 <li><a href="index.html" class="dropdown-item">${navbarData[0].contactTitle}</a></li>
