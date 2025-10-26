@@ -14,10 +14,14 @@ const wishlistTitle = document.querySelector(".wishlist-title");
 const bannerSection = document.querySelector('.banner');
 
 
+
 let productList = [];
 let cartProduct = [];
 let wishlistProduct = [];
 let bannerData = [];
+
+let cartCount = 0;
+
 
 const updateTotals = () => {
   let totalPrice = 0;
@@ -228,12 +232,14 @@ const showCards = () => {
 
     cartBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log(product)
+      document.querySelector(".total-cart").textContent = cartProduct.length + 1;
       addToCart(product);
+      
     })
 
     wishlistbtn.addEventListener('click', (e) => {
       e.preventDefault();
+      document.querySelector(".total-wishlist").textContent = cartProduct.length + 1;
       addToWishList(product);
     })
 
@@ -243,7 +249,8 @@ const showCards = () => {
 // add to cart
 
 const addToCart = (product) => {
-  
+
+
   let totalItem = 0;
 
   console.log(product)
@@ -286,7 +293,9 @@ const addToCart = (product) => {
   const deleteBtn = cartList.querySelector("li:last-child .delete-btn");
 
   deleteBtn.addEventListener('click', (e) => {
+
     e.preventDefault();
+    document.querySelector(".total-cart").textContent = cartProduct.length + 1;
 
     const li = e.target.closest("li");
     li.classList.add("slide-out");
@@ -347,84 +356,6 @@ const addToWishList = (product) => {
 };
 
 
-// add to wishlist
-
-// const addToWishList = (product) => {
-
-//   const exist = wishlistProduct.find(item => item.id === product.id);
-//   if(exist){
-//     alert("Item already in wishlist");
-//     return;
-//   }
-
-//   alert('Product is added to wishlist');
-
-//   wishlistProduct.push(product);
-
-//   let quantity = 1;
-//   let price = parseFloat(product.price.replace('$',''));
-
-//   const cartItem = document.createElement('div');
-//   cartItem.classList.add('item');
-//   cartItem.classList.add('wishlistTotal');
-//   cartItem.innerHTML = `
-//     <div class="item-image">
-//           <img src="${product.image}" alt="">
-//         </div>
-//         <div>
-//           <h4>${product.name}</h4>
-//           <h4 class="item-total">${product.price}</h4>
-//         </div>
-//         <div class="flex">
-//           <a href="#" class="quantity-btn">
-//             <i class="fa-solid fa-minus minus"></i>
-//           </a>
-
-//           <h3 class="quantity-value">${quantity}</h3>
-
-//           <a href="#" class="quantity-btn">
-//             <i class="fa-solid fa-plus plus"></i>
-//           </a>
-//         </div>
-//       `;
-
-//   wishList.appendChild(cartItem);
-
-//   const plusBtn = cartItem.querySelector('.plus');
-//   const quantityValue = cartItem.querySelector('.quantity-value');
-//   const itemTotal = cartItem.querySelector('.item-total');
-//   const minusBtn = cartItem.querySelector('.minus');
-
-
-//   plusBtn.addEventListener('click', (e) => {
-
-//     e.preventDefault();
-//     quantity++;
-//     quantityValue.textContent = quantity;
-//     itemTotal.textContent = `$${ price * quantity }`;
-//   })
-
-//   minusBtn.addEventListener('click', (e) => {
-
-//     e.preventDefault();
-//     if(quantity > 1){
-//       quantity--;
-//       quantityValue.textContent = quantity;
-//       itemTotal.textContent = `$${ (price * quantity) }`;
-//     }else{
-//       cartItem.classList.add('slide-out');
-      
-//       setTimeout(()=>{
-//         cartItem.remove();
-//       cartProduct = cartProduct.filter(item => item.id !== product.id);
-//       }, 300)
-//     }
-    
-    
-//   })
-
-// }
-
 const initApp = () => {
 
   fetch('public/product.json')
@@ -448,3 +379,4 @@ const banner = () => {
 
 initApp();
 banner();
+

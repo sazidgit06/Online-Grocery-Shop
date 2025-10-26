@@ -12,7 +12,6 @@ const showBlogData = () => {
       <div class="row">
         <div class="section-header d-flex align-items-center justify-content-between my-4">
           <h2 class="section-title">${blogData[0].title}</h2>
-          <a href="#" class="btn btn-primary">${blogData[0].viewAllBtn}</a>
         </div>
       </div>
       <div class="row">

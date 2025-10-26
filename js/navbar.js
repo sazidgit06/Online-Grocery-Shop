@@ -55,9 +55,8 @@ const showNavbarData = () => {
               <ul class="dropdown-menu position-absolute border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
                 <li><a href="about.html" class="dropdown-item">${navbarData[0].aboutTitle}</a></li>
                 <li><a href="allProducts.html" class="dropdown-item">${navbarData[0].shopTitle}</a></li>
-                <li><a href="singleProduct.html" class="dropdown-item">Single Product</a></li>
-                <li><a href="#blog" class="dropdown-item">${navbarData[0].blogTitle}</a></li>
-                <li><a href="index.html" class="dropdown-item">${navbarData[0].contactTitle}</a></li>
+                <li><a href="blog.html" class="dropdown-item">${navbarData[0].blogTitle}</a></li>
+                <li><a href="contactUs.html" class="dropdown-item">${navbarData[0].contactTitle}</a></li>
                 <li><a href="index.html" class="dropdown-item">${navbarData[0].profileTitle}</a></li>
 
               </ul>
@@ -77,12 +76,14 @@ const showNavbarData = () => {
             <li class="cart-btn" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasWishlist" aria-controls="offcanvasWishlist">
               <a href="#" class="p-2 mx-1 wishlist">
-              ${navbarData[0].wishlistIcon}
+              ${navbarData[0].wishlistIcon}</a>
+              <span class="total-wishlist">0</span>
           </li>
             <li class="cart-btn" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
               <a href="#" class="p-2 mx-1 cart-icon">
               ${navbarData[0].cartIcon}</a>
+              <span class="total-cart">0</span>
           </li>
            
 
