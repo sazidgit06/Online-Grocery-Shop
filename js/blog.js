@@ -4,7 +4,6 @@ const blogId = document.getElementById('blog')
 let blogData = [];
 
 const showBlogData = () => {
-    console.log((blogData))
     
     const blogHtml = `
 

@@ -232,14 +232,14 @@ const showCards = () => {
 
     cartBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      document.querySelector(".total-cart").textContent = cartProduct.length + 1;
+      // document.querySelector(".total-cart").textContent = cartProduct.length + 1;
       addToCart(product);
       
     })
 
     wishlistbtn.addEventListener('click', (e) => {
       e.preventDefault();
-      document.querySelector(".total-wishlist").textContent = cartProduct.length + 1;
+      // document.querySelector(".total-wishlist").textContent = cartProduct.length + 1;
       addToWishList(product);
     })
 
@@ -267,7 +267,7 @@ const addToCart = (product) => {
   console.log(cartProduct)
 
   // let quantity = 1;
-  let price = parseFloat(product.price.replace('$','')) 
+  // let price = parseFloat(product.price.replace('$','')) 
 
   const cartProducthtml = `
 
@@ -379,4 +379,3 @@ const banner = () => {
 
 initApp();
 banner();
-
