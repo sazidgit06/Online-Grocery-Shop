@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinPro Acne Clearing Gel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .image-section {
+            position: relative;
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: crosshair;
+            background: white;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ffd700;
+            color: black;
+            padding: 15px;
+            border-radius: 50%;
+            font-weight: bold;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .badge-line1 {
+            font-size: 14px;
+        }
+
+        .badge-line2 {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .badge-line3 {
+            font-size: 14px;
+        }
+
+        .zoom-lens {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #00bcd4;
+            background: rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            display: none;
+            z-index: 5;
+        }
+
+        .zoom-result {
+            position: absolute;
+            top: 0;
+            left: 105%;
+            width: 500px;
+            height: 500px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: none;
+            background: white;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .zoom-result img {
+            position: absolute;
+            width: auto;
+            height: auto;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .thumbnail.active {
+            border-color: #00bcd4;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 10px 0;
+        }
+
+        .mall-badge {
+            display: inline-block;
+            background: #9c27b0;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #ffa726;
+            font-size: 18px;
+        }
+
+        .ratings-count {
+            color: #2196f3;
+            font-size: 14px;
+        }
+
+        .brand {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .brand a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+
+        .price-section {
+            margin-bottom: 25px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .discount {
+            color: #ff5722;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .option-section {
+            margin-bottom: 20px;
+        }
+
+        .option-label {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-btn.active {
+            border-color: #ff5722;
+            background: #fff3f0;
+        }
+
+        .quantity-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .buy-now {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .buy-now:hover {
+            background: #00acc1;
+        }
+
+        .add-cart {
+            background: #ff5722;
+            color: white;
+        }
+
+        .add-cart:hover {
+            background: #f4511e;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .zoom-result {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <div class="main-image-container" id="imgContainer">
+                <div class="badge">
+                    <span class="badge-line1">Free</span>
+                    <span class="badge-line2">Delivery</span>
+                    <!-- <span class="badge-line3">GET 1<br>FREE</span> -->
+                </div>
+                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800" alt="SkinPro Product" id="mainImg">
+                <div class="zoom-lens" id="lens"></div>
+            </div>
+            <div class="zoom-result" id="result">
+                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1600" id="resultImg">
+            </div>
+            
+            <div class="thumbnail-container">
+                <div class="thumbnail active" data-img="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800" data-zoom="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1600">
+                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200" alt="Thumb 1">
+                </div>
+                <div class="thumbnail" data-img="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=800" data-zoom="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=1600">
+                    <img src="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=200" alt="Thumb 2">
+                </div>
+                <div class="thumbnail" data-img="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800" data-zoom="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=1600">
+                    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=200" alt="Thumb 3">
+                </div>
+                <div class="thumbnail" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800" data-zoom="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600">
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200" alt="Thumb 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <span class="mall-badge">Mall</span>
+            <h1>Buy 1 Skinpro Acne Clearing Gel cleanser 50ml and get 1Skinpro Acne Clearing Gel Cleanser 50 ml Free !!</h1>
+            
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="ratings-count">Ratings 49</span>
+            </div>
+
+            <div class="brand">
+                Brand: <a href="#">SkinPro</a> | <a href="#">More Skin Care from SkinPro</a>
+            </div>
+
+            <div class="price-section">
+                <span class="current-price">৳ 125</span>
+                <span class="original-price">৳ 250</span>
+                <span class="discount">-50%</span>
+            </div>
+
+            <div class="option-section">
+                <div class="option-label">Scent</div>
+                <div class="option-buttons">
+                    <button class="option-btn active">Fresh</button>
+                </div>
+            </div>
+
+            <div class="option-section">
+                <div class="option-label">Color Family</div>
+                <div class="option-buttons">
+                    <button class="option-btn active">Blue</button>
+                </div>
+            </div>
+
+            <div class="quantity-section">
+                <span class="option-label">Quantity</span>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" id="decreaseBtn">−</button>
+                    <input type="text" class="quantity-input" id="quantityInput" value="1" readonly>
+                    <button class="quantity-btn" id="increaseBtn">+</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn buy-now">Buy Now</button>
+                <button class="btn add-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image Zoom Functionality
+        function imageZoom(imgID, resultID, lensID) {
+            const img = document.getElementById(imgID);
+            const result = document.getElementById(resultID);
+            const lens = document.getElementById(lensID);
+            const resultImg = document.getElementById('resultImg');
+            
+            // Calculate zoom ratio
+            const cx = result.offsetWidth / lens.offsetWidth;
+            const cy = result.offsetHeight / lens.offsetHeight;
+            
+            // Set background size for result
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+            
+            // Mouse enter
+            img.parentElement.addEventListener('mouseenter', showZoom);
+            
+            // Mouse leave
+            img.parentElement.addEventListener('mouseleave', hideZoom);
+            
+            // Mouse move
+            img.parentElement.addEventListener('mousemove', moveZoom);
+            
+            // Touch events for mobile
+            lens.addEventListener('touchmove', moveZoom);
+            
+            function showZoom() {
+                lens.style.display = 'block';
+                result.style.display = 'block';
+            }
+            
+            function hideZoom() {
+                lens.style.display = 'none';
+                result.style.display = 'none';
+            }
+            
+            function moveZoom(e) {
+                e.preventDefault();
+                
+                // Get cursor position
+                const pos = getCursorPos(e);
+                
+                // Calculate lens position
+                let x = pos.x - (lens.offsetWidth / 2);
+                let y = pos.y - (lens.offsetHeight / 2);
+                
+                // Prevent lens from going outside image
+                if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+                if (x < 0) x = 0;
+                if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+                if (y < 0) y = 0;
+                
+                // Set lens position
+                lens.style.left = x + 'px';
+                lens.style.top = y + 'px';
+                
+                // Display zoomed image
+                resultImg.style.left = (-x * cx) + 'px';
+                resultImg.style.top = (-y * cy) + 'px';
+                resultImg.style.width = (img.width * cx) + 'px';
+                resultImg.style.height = (img.height * cy) + 'px';
+            }
+            
+            function getCursorPos(e) {
+                const a = img.getBoundingClientRect();
+                let x = e.pageX - a.left - window.pageXOffset;
+                let y = e.pageY - a.top - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+        
+        // Initialize zoom
+        imageZoom("mainImg", "result", "lens");
+        
+        // Thumbnail switching
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImg = document.getElementById('mainImg');
+        const resultImg = document.getElementById('resultImg');
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const imgUrl = thumb.getAttribute('data-img');
+                const zoomUrl = thumb.getAttribute('data-zoom');
+                
+                mainImg.src = imgUrl;
+                resultImg.src = zoomUrl;
+                
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                
+                // Re-initialize zoom after image change
+                setTimeout(() => {
+                    imageZoom("mainImg", "result", "lens");
+                }, 100);
+            });
+        });
+
+        // Quantity controls
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const quantityInput = document.getElementById('quantityInput');
+
+        decreaseBtn.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+        });
+    </script>
+</body>
+</html>
