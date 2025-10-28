@@ -25,6 +25,7 @@ let cartCount = 0;
 
 const updateTotals = () => {
   let totalPrice = 0;
+  let totalQuantity = 0; 
 
   const cartItems = document.querySelectorAll(".cart-list li");
 
@@ -32,15 +33,20 @@ const updateTotals = () => {
     const priceText = item.querySelector("span.text-body-secondary").textContent;
     const price = parseFloat(priceText.replace("$", ""));
     totalPrice += price;
+    totalQuantity++;
   });
 
   cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+  const quantity = document.querySelector(".total-cart");
+  quantity.textContent = totalQuantity;
 
   // console.log("Total price:", totalPrice);
 };
 
 const wishlistUpdateTotals = () => {
   let totalPrice = 0;
+    let totalQuantity = 0; 
+
 
   const wishlistItems = document.querySelectorAll(".wish-list li");
 
@@ -48,11 +54,14 @@ const wishlistUpdateTotals = () => {
     const priceText = item.querySelector("span.text-body-secondary").textContent;
     const price = parseFloat(priceText.replace("$", ""));
     totalPrice += price;
+     totalQuantity++;
   });
 
   const wishlistTotal = document.querySelector(".wishlist-total");
   if (wishlistTotal) {
     wishlistTotal.textContent = `$${totalPrice.toFixed(2)}`;
+    const quantity = document.querySelector(".total-wishlist");
+  quantity.textContent = totalQuantity;
   }
 
 };

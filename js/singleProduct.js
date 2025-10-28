@@ -13,6 +13,7 @@ const productId = params.get("id");
 
 const singleProductTotal = () => {
   let totalPrice = 0;
+  let totalQuantity = 0; 
 
   const cartItems = document.querySelectorAll(".cart-list li");
 
@@ -20,9 +21,12 @@ const singleProductTotal = () => {
     const priceText = item.querySelector("span.text-body-secondary").textContent;
     const price = parseFloat(priceText.replace("$", ""));
     totalPrice += price;
+    totalQuantity++;
   });
 
   cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+  const quantity = document.querySelector(".total-cart");
+  quantity.textContent = totalQuantity;
 };
 
 fetch('public/product.json')
@@ -88,7 +92,7 @@ fetch('public/product.json')
 
       </div>
       `;
-      // image zoom in
+
       productPage.appendChild(div);
       let imageZoom = document.getElementById('imageZoom');
       imageZoom.addEventListener('mousemove', (e) => {
