@@ -16,35 +16,48 @@
 
   <style>
 
+    .margin-t{
+      margin-top: 6rem;
+    }
     .container {
       display: flex;
       padding: 5px;
       gap: 20px;
     }
 
-    .filter-section {
+     .filter-section {
+      width: 400px;
       background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-right: 1px solid #ccc;
+      height: 100vh;
+      padding: 20px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      transition: right 0.4s ease;
+    }
+
+    .filter-section.active {
+      right: 0;
     }
 
     .filter-section h3 {
-      color: #444;
-      margin-bottom: 10px;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
     }
 
     .line {
-      height: 1px;
-      background: #ddd;
-      margin-bottom: 10px;
+      height: 2px;
+      background: #007bff;
+      width: 50px;
+      margin: 5px 0 10px;
     }
 
     .filter-section label {
       display: block;
-      margin-bottom: 10px;
-      color: #333;
+      margin-bottom: 8px;
       cursor: pointer;
+      color: #555;
     }
 
     .price-range {
@@ -59,6 +72,71 @@
       margin-top: 5px;
       color: #555;
     }
+
+    .filter-btn {
+      display: none;
+      position: fixed;
+      top: 270px;
+      left: 15px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .filter-btn {
+        display: block;
+      }
+      .filter-btn {
+        display: block;
+      }
+      .margin-t{
+      margin-top: 20rem;
+    }
+
+      .filter-section {
+        width: 80%;
+        right: -100%;
+      }
+      .filter-section {
+        position: fixed;
+        top: -10%;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100%;
+        z-index: 1000;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        border-right: none;
+        border-left: 1px solid #ccc;
+      }
+      
+
+      .filter-section.active {
+        right: 0;
+      }
+    }
+    
+
   </style>
 
 </head>
@@ -477,10 +555,13 @@
     </div>
   </header>
 
-  <!-- filter section -->
+  <!-- all product section -->
 
   <section class="margin-t">
+    <button class="filter-btn">☰ Filter</button>
+    <div class="overlay"></div>
     <div class="container">
+
       <aside class="filter-section margin-t">
         <h3>Sort by</h3>
         <div class="line"></div>
@@ -522,8 +603,7 @@
         <div class="row">
           <div class="col-md-12">
 
-            <div
-              class="all-products-grid row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="all-products-grid row row-cols-1 row-cols-sm-2 row-cols-md-3">
 
 
             </div>
@@ -533,7 +613,7 @@
     </div>
   </section>
 
-  <!-- filter section end -->
+  <!-- all product section end -->
 
   <!-- <section id="singleProduct" class="pb-5 margin-t">
     <div class="container-lg">
@@ -707,8 +787,7 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
 
-  <!-- <script src="main.js"></script> -->
-  <script src="js/navbar.js"></script>
+    <script src="js/navbar.js"></script>
   <script src="js/navbarLeftTab.js"></script>
   <script src="js/allProducts.js"></script>
 

@@ -1,100 +1,4 @@
-// // Product data
-// let products = [
-//     {
-//         "id" : 1,
-//         "name" : "Whole Wheat Sandwich Bread",
-//         "category" : "Fruits & Veges",
-//         "image" : "/images/product-thumb-1.png",
-//         "price" : 15,
-//         "rating" : 4.5,
-//         "Filter" : "Best selling product",
-//         "bestSelling": true,
-//         "offer": "bestPrice"
-//     },
-//     {
-//         "id" : 2,
-//         "name" : "Whole Grain Oatmeal",
-//         "category" : "Dairy and Eggs",
-//         "image" : "/images/product-thumb-2.png",
-//         "price" : 16,
-//         "rating" : 4.5,
-//         "Filter" : "Featured products",
-//         "bestSelling": true,
-//         "offer": "bestPrice"
-//     },
-//     {
-//         "id" : 3,
-//         "name" : "Sharp Cheddar Cheese Block",
-//         "category" : "Meat and Poultry",
-//         "image" : "/images/product-thumb-3.png",
-//         "price" : 17,
-//         "rating" : 4.5,
-//         "Filter" : "Just Arrived"
-//     },
-//     {
-//         "id" : 4,
-//         "name" : "Organic Baby Spinach",
-//         "category" : "Seafood",
-//         "image" : "/images/product-thumb-4.png",
-//         "price" : 18,
-//         "rating" : 4.5,
-//         "Filter" : "Featured products"
-//     },
-//     {
-//         "id" : 5,
-//         "name" : "Organic Spinach Leaves (Fresh Produce)",
-//         "category" : "Bakery and Bread",
-//         "image" : "/images/product-thumb-5.png",
-//         "price" : 12,
-//         "rating" : 4.5,
-//         "Filter" : "Best selling product"
-//     },
-//     {
-//         "id" : 6,
-//         "name" : "Fresh Salmon",
-//         "category" : "Fruits & Veges",
-//         "image" : "/images/product-thumb-6.png",
-//         "price" : 14,
-//         "rating" : 4.5,
-//         "Filter" : "Featured products"
-//     },
-//     {
-//         "id" : 7,
-//         "name" : "Imported Italian Spaghetti Pasta",
-//         "category" : "Dairy and Eggs",
-//         "image" : "/images/product-thumb-7.png",
-//         "price" : 12,
-//         "rating" : 4.5,
-//         "Filter" : "Just Arrived"
-//     },
-//     {
-//         "id" : 8,
-//         "name" : "Granny Smith Apples",
-//         "category" : "Meat and Poultry",
-//         "image" : "/images/product-thumb-8.png",
-//         "price" : 13,
-//         "rating" : 4.5,
-//         "Filter" : "Best selling product"
-//     },
-//     {
-//         "id" : 9,
-//         "name" : "Organic 2% Reduced Fat Milk",
-//         "category" : "Seafood",
-//         "image" : "/images/product-thumb-9.png",
-//         "price" : 11,
-//         "rating" : 4.5,
-//         "Filter" : "Best selling product"
-//     },
-//     {
-//         "id" : 10,
-//         "name" : "Greek Style Plain Yogurt",
-//         "category" : "Bakery and Bread",
-//         "image" : "/images/product-thumb-10.png",
-//         "price" : 21,
-//         "rating" : 4.5,
-//         "Filter" : "Best selling product"
-//     }
-// ];
+
 
 // Initialize filters
 let currentSort = 'all';
@@ -103,6 +7,8 @@ let maxPrice = 100000;
 let currentOffer = null;
 
 let products = [];
+let cartProduct = [];
+let wishlistProduct = [];
 
 
 // Get DOM elements
@@ -113,18 +19,66 @@ const minPriceSlider = document.getElementById('minPrice');
 const maxPriceSlider = document.getElementById('maxPrice');
 const minValueDisplay = document.getElementById('minValue');
 const maxValueDisplay = document.getElementById('maxValue');
+const cartList = document.querySelector(".cart-list");
+const cartTotal = document.querySelector(".cart-total");
+const wishList = document.querySelector(".wish-list");
+
+
+const updateTotals = () => {
+  let totalPrice = 0;
+  let totalQuantity = 0;
+
+  const cartItems = document.querySelectorAll(".cart-list li");
+
+  cartItems.forEach(item => {
+    const priceText = item.querySelector("span.text-body-secondary").textContent;
+    const price = parseFloat(priceText.replace("$", ""));
+    totalPrice += price;
+    totalQuantity++;
+  });
+
+  cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+  const quantity = document.querySelector(".total-cart");
+  quantity.textContent = totalQuantity;
+
+  // console.log("Total price:", totalPrice);
+};
+
+const wishlistUpdateTotals = () => {
+  let totalPrice = 0;
+  let totalQuantity = 0;
+
+
+  const wishlistItems = document.querySelectorAll(".wish-list li");
+
+  wishlistItems.forEach(item => {
+    const priceText = item.querySelector("span.text-body-secondary").textContent;
+    const price = parseFloat(priceText.replace("$", ""));
+    totalPrice += price;
+    totalQuantity++;
+  });
+
+  const wishlistTotal = document.querySelector(".wishlist-total");
+  if (wishlistTotal) {
+    wishlistTotal.textContent = `$${totalPrice.toFixed(2)}`;
+    const quantity = document.querySelector(".total-wishlist");
+    quantity.textContent = totalQuantity;
+  }
+
+};
+
 
 // Display products
 function displayProducts(productsToShow) {
   productGrid.innerHTML = '';
-  
+
   if (productsToShow.length === 0) {
     productGrid.innerHTML = '<div class="col-12"><p class="text-center">No products found matching your filters.</p></div>';
     return;
   }
-  
+
   productsToShow.forEach(product => {
-    const productCard = `
+    const productCardhtml = `
       <div class='product-item'>
             <figure>
                   <a href="singleProduct.html?id=${product.id}" title="Product Title">
@@ -165,14 +119,14 @@ function displayProducts(productsToShow) {
                       <div class="col-3"><input type="number" name="quantity"
                           class="form-control border-dark-subtle input-number quantity" value="1"></div>
                       <div class="col-7">
-                      <a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart productCart">
+                      <a href="#" class="btn btn-primary rounded-1 p-2 fs-7 btn-cart allproductCart">
                       <svg width="18"
                             height="18">
                             <use xlink:href="#cart"></use>
                       </svg>
                       Add to Cart</a>
                       </div>
-                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 wishlistCart"><svg width="18"
+                      <div class="col-2"><a href="#" class="btn btn-outline-dark rounded-1 p-2 fs-6 allwishlistCart"><svg width="18"
                             height="18">
                             <use xlink:href="#heart"></use>
                           </svg></a></div>
@@ -181,19 +135,144 @@ function displayProducts(productsToShow) {
                 </div>
                 </div>
     `;
-    productGrid.innerHTML += productCard;
+    productGrid.insertAdjacentHTML("beforeend", productCardhtml);
+      const productElement = productGrid.lastElementChild;
+
+
+    const cartBtn = productElement.querySelector('.allproductCart');
+    const wishlistbtn = productElement.querySelector('.allwishlistCart');
+
+    cartBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      addToCart(product);
+
+    })
+
+    wishlistbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      addToWishList(product);
+    })
   });
 }
+
+const addToCart = (product) => {
+
+
+  let totalItem = 0;
+
+  console.log(product)
+  const exist = cartProduct.find(item => item.id === product.id);
+  console.log(exist)
+  if (exist) {
+    alert("Item already added");
+    return;
+  }
+
+// alert("product is added to cart")
+
+
+  cartProduct.push(product);
+  console.log(cartProduct)
+
+  // let quantity = 1;
+  // let price = parseFloat(product.price.replace('$','')) 
+
+  const cartProducthtml = `
+
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+          
+              <img src="${product.image}" />
+            
+            <div>
+              <h6 class="my-0">${product.name}</h6>
+              <small class="text-body-secondary">${product.category}</small>
+            </div>
+            <span class="text-body-secondary">${product.price}</span>
+            <i class="fa-solid fa-trash delete-btn"></i>
+          </li>
+      
+      `;
+
+  cartList.insertAdjacentHTML("beforeend", cartProducthtml);
+
+
+  updateTotals();
+
+  const deleteBtn = cartList.querySelector("li:last-child .delete-btn");
+
+  deleteBtn.addEventListener('click', (e) => {
+
+    e.preventDefault();
+    document.querySelector(".total-cart").textContent = cartProduct.length + 1;
+
+    const li = e.target.closest("li");
+    li.classList.add("slide-out");
+
+    setTimeout(() => {
+      li.remove();
+      cartProduct = cartProduct.filter(item => item.id !== product.id);
+      updateTotals();
+    }, 300);
+  })
+
+}
+
+
+const addToWishList = (product) => {
+  const exist = wishlistProduct.find(item => item.id === product.id);
+  if (exist) {
+    alert("Item already in wishlist");
+    return;
+  }
+
+  // alert('Product is added to wishlist');
+  wishlistProduct.push(product);
+
+  const wishlistItemHTML = `
+    <li class="list-group-item d-flex justify-content-between lh-sm">
+      <img src="${product.image}" />
+      <div>
+        <h6 class="my-0">${product.name}</h6>
+        <small class="text-body-secondary">${product.category}</small>
+      </div>
+      <span class="text-body-secondary">${product.price}</span>
+      <i class="fa-solid fa-trash delete-btn"></i>
+    </li>
+  `;
+
+  wishList.insertAdjacentHTML("beforeend", wishlistItemHTML);
+
+  wishlistUpdateTotals();
+
+  const deleteBtn = wishList.querySelector("li:last-child .delete-btn");
+
+  deleteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const li = e.target.closest("li");
+    li.classList.add("slide-out");
+
+    setTimeout(() => {
+      li.remove();
+      const index = wishlistProduct.findIndex(item => item.id === product.id);
+      if (index !== -1) wishlistProduct.splice(index, 1);
+
+      wishlistUpdateTotals();
+    }, 300);
+
+  });
+};
+
 
 // Filter and sort products
 function filterAndSortProducts() {
   let filteredProducts = [...products];
-  
+
   // Filter by price range
-  filteredProducts = filteredProducts.filter(p => 
+  filteredProducts = filteredProducts.filter(p =>
     p.price >= minPrice && p.price <= maxPrice
   );
-  
+
   // Filter by offers
   if (currentOffer === 'bestPrice') {
     filteredProducts = filteredProducts.filter(p => p.offer === 'bestPrice');
@@ -201,9 +280,9 @@ function filterAndSortProducts() {
     // Filter products with discount (if you add discount field later)
     filteredProducts = filteredProducts.filter(p => p.discount && p.discount > 0);
   }
-  
+
   // Sort products
-  switch(currentSort) {
+  switch (currentSort) {
     case 'lowToHigh':
       filteredProducts.sort((a, b) => a.price - b.price);
       break;
@@ -219,7 +298,7 @@ function filterAndSortProducts() {
       filteredProducts.sort((a, b) => a.id - b.id);
       break;
   }
-  
+
   displayProducts(filteredProducts);
 }
 
@@ -242,28 +321,44 @@ offerRadios.forEach(radio => {
 // Price range sliders
 minPriceSlider.addEventListener('input', (e) => {
   minPrice = parseInt(e.target.value);
-  
+
   // Ensure min doesn't exceed max
   if (minPrice > maxPrice) {
     minPrice = maxPrice;
     minPriceSlider.value = maxPrice;
   }
-  
-  minValueDisplay.textContent = `৳${minPrice}`;
+
+  minValueDisplay.textContent = `$${minPrice}`;
   filterAndSortProducts();
 });
 
 maxPriceSlider.addEventListener('input', (e) => {
   maxPrice = parseInt(e.target.value);
-  
+
   // Ensure max doesn't go below min
   if (maxPrice < minPrice) {
     maxPrice = minPrice;
     maxPriceSlider.value = minPrice;
   }
-  
-  maxValueDisplay.textContent = `৳${maxPrice}`;
+
+  maxValueDisplay.textContent = `$${maxPrice}`;
   filterAndSortProducts();
+});
+
+// filter section toggle
+
+const filterBtn = document.querySelector('.filter-btn');
+const filterSection = document.querySelector('.filter-section');
+const overlay = document.querySelector('.overlay');
+
+filterBtn.addEventListener('click', () => {
+  filterSection.classList.toggle('active');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+  filterSection.classList.remove('active');
+  overlay.classList.remove('active');
 });
 
 

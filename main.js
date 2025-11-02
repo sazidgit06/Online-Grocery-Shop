@@ -25,7 +25,7 @@ let cartCount = 0;
 
 const updateTotals = () => {
   let totalPrice = 0;
-  let totalQuantity = 0; 
+  let totalQuantity = 0;
 
   const cartItems = document.querySelectorAll(".cart-list li");
 
@@ -45,7 +45,7 @@ const updateTotals = () => {
 
 const wishlistUpdateTotals = () => {
   let totalPrice = 0;
-    let totalQuantity = 0; 
+  let totalQuantity = 0;
 
 
   const wishlistItems = document.querySelectorAll(".wish-list li");
@@ -54,14 +54,14 @@ const wishlistUpdateTotals = () => {
     const priceText = item.querySelector("span.text-body-secondary").textContent;
     const price = parseFloat(priceText.replace("$", ""));
     totalPrice += price;
-     totalQuantity++;
+    totalQuantity++;
   });
 
   const wishlistTotal = document.querySelector(".wishlist-total");
   if (wishlistTotal) {
     wishlistTotal.textContent = `$${totalPrice.toFixed(2)}`;
     const quantity = document.querySelector(".total-wishlist");
-  quantity.textContent = totalQuantity;
+    quantity.textContent = totalQuantity;
   }
 
 };
@@ -241,9 +241,10 @@ const showCards = () => {
 
     cartBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      
       // document.querySelector(".total-cart").textContent = cartProduct.length + 1;
       addToCart(product);
-      
+
     })
 
     wishlistbtn.addEventListener('click', (e) => {
@@ -255,6 +256,20 @@ const showCards = () => {
   })
 }
 
+// const toast = () => {
+//   const toastClass = document.querySelector(".toast");
+//   const toastHtml = `
+//       <div class="d-flex">
+//         <div class="toast-body">
+//           Hello, world! This is a toast message.
+//         </div>
+//         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+//       </div>
+//     `;
+//   toastClass.insertAdjacentHTML("beforeend", toastHtml)
+
+// }
+
 // add to cart
 
 const addToCart = (product) => {
@@ -265,12 +280,13 @@ const addToCart = (product) => {
   console.log(product)
   const exist = cartProduct.find(item => item.id === product.id);
   console.log(exist)
-  if(exist){
+  if (exist) {
     alert("Item already added");
     return;
   }
 
-  alert('Product is added to cart');
+// alert("product is added to cart")
+
 
   cartProduct.push(product);
   console.log(cartProduct)
@@ -295,7 +311,7 @@ const addToCart = (product) => {
       `;
 
   cartList.insertAdjacentHTML("beforeend", cartProducthtml);
-  
+
 
   updateTotals();
 
@@ -309,11 +325,11 @@ const addToCart = (product) => {
     const li = e.target.closest("li");
     li.classList.add("slide-out");
 
-  setTimeout(() => {
-    li.remove();
-    cartProduct = cartProduct.filter(item => item.id !== product.id);
-    updateTotals();
-  }, 300);
+    setTimeout(() => {
+      li.remove();
+      cartProduct = cartProduct.filter(item => item.id !== product.id);
+      updateTotals();
+    }, 300);
   })
 
 }
@@ -326,7 +342,7 @@ const addToWishList = (product) => {
     return;
   }
 
-  alert('Product is added to wishlist');
+  // alert('Product is added to wishlist');
   wishlistProduct.push(product);
 
   const wishlistItemHTML = `
