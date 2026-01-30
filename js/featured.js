@@ -52,7 +52,7 @@ const showcards = () => {
     producthtml.classList.add('swiper-slide');
     producthtml.innerHTML = `
                 <figure>
-                  <a href="singleProduct.html?id=${product.id}" title="Product Title">
+                  <a href="productDetails.html?id=${product.id}" title="Product Title">
                     <img src="${product.image}" alt="Product Thumbnail" class="tab-image">
                   </a>
                 </figure>

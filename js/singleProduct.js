@@ -13,7 +13,7 @@ const productId = params.get("id");
 
 const singleProductTotal = () => {
   let totalPrice = 0;
-  let totalQuantity = 0; 
+  let totalQuantity = 0;
 
   const cartItems = document.querySelectorAll(".cart-list li");
 
@@ -38,17 +38,17 @@ fetch('public/product.json')
       const div = document.createElement('div');
       div.classList.add('container');
       div.innerHTML = ` 
-      <div class="product-left">
-        <div class="product-image" id="imageZoom" style="
-          --url: url(${product.image});
-          --zoom-x: 0%; --zoom-y: 0%;
-          --display: none
-        ">
-          <img src="${product.image}" alt="Lucky Box" />
-        </div>
+        <div class="product-left">
+          <div class="product-image" id="imageZoom" style="
+            --url: url(${product.image});
+            --zoom-x: 0%; --zoom-y: 0%;
+            --display: none
+          ">
+            <img id="product-main-image" src="${product.image}" alt="Lucky Box" />
+          </div>
         <div class="thumbnail-container">
-                <div class="thumbnail active" data-img="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800" data-zoom="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1600">
-                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200" alt="Thumb 1">
+                <div class="thumbnail active" data-img="${product.image}" data-zoom="${product.image}">
+                    <img src="${product.image}" alt="Thumb 1">
                 </div>
                 <div class="thumbnail" data-img="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=800" data-zoom="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=1600">
                     <img src="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=200" alt="Thumb 2">
@@ -94,7 +94,9 @@ fetch('public/product.json')
       `;
 
       productPage.appendChild(div);
+
       let imageZoom = document.getElementById('imageZoom');
+
       imageZoom.addEventListener('mousemove', (e) => {
         imageZoom.style.setProperty('--display', 'block');
         let pointer = {
@@ -107,8 +109,35 @@ fetch('public/product.json')
       imageZoom.addEventListener('mouseout', () => {
         imageZoom.style.setProperty('--display', 'none');
       })
-
       // image zoom in end
+
+      // thumbnail image change
+
+      const mainImage = document.getElementById('product-main-image');
+      const smallimg = document.getElementsByClassName('thumbnail');
+
+      smallimg[0].addEventListener('click', function () {
+        mainImage.src = smallimg[0].getAttribute('data-img');
+        imageZoom.style.setProperty('--url', 'url(' + smallimg[0].getAttribute('data-zoom') + ')');
+        setActiveThumbnail(smallimg[0]);
+      });
+      smallimg[1].addEventListener('click', function () {
+        mainImage.src = smallimg[1].getAttribute('data-img');
+        imageZoom.style.setProperty('--url', 'url(' + smallimg[1].getAttribute('data-zoom') + ')');
+        setActiveThumbnail(smallimg[1]);
+      });
+      smallimg[2].addEventListener('click', function () {
+        mainImage.src = smallimg[2].getAttribute('data-img');
+        imageZoom.style.setProperty('--url', 'url(' + smallimg[2].getAttribute('data-zoom') + ')');
+        setActiveThumbnail(smallimg[2]);
+      }); 
+      smallimg[3].addEventListener('click', function () {
+        mainImage.src = smallimg[3].getAttribute('data-img');
+        imageZoom.style.setProperty('--url', 'url(' + smallimg[3].getAttribute('data-zoom') + ')');
+        setActiveThumbnail(smallimg[3]);
+      });
+
+      // thumbnail image change end
 
       // plus minus button functionality
 
@@ -118,17 +147,13 @@ fetch('public/product.json')
 
       plusBtn.addEventListener("click", () => {
         let currentValue = parseInt(quantityInput.value);
-
         quantityInput.value = currentValue + 1;
-        console.log(currentValue)
       });
 
       minusBtn.addEventListener("click", () => {
         let currentValue = parseInt(quantityInput.value);
-
         if (currentValue > 1) {
           quantityInput.value = currentValue - 1;
-          console.log(currentValue)
         }
       });
 
@@ -159,7 +184,6 @@ fetch('public/product.json')
           return;
         }
 
-        alert('Product is added to cart');
 
         cartProduct.push(product);
         console.log(cartProduct)
@@ -208,7 +232,5 @@ fetch('public/product.json')
 
     }
   })
-
-
 
 
